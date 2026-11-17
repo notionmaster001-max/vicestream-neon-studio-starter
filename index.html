@@ -3,67 +3,150 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neon Webcam Frame | ViceStream Neon Studio</title>
+  <title>ViceStream Neon Studio™ | Interactive Webcam Frame & OBS Suite</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      width: 640px;
-      height: 400px;
-      background: transparent;
-      overflow: hidden;
-      font-family: 'Inter', -apple-system, sans-serif;
+      background: #080811;
+      color: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .cam-frame {
+      width: 100%;
+      max-width: 640px;
+      aspect-ratio: 16 / 9;
+      border: 3px solid transparent;
+      border-image: linear-gradient(135deg, #ff2a85 0%, #9d00ff 50%, #00f0ff 100%) 1;
+      box-shadow: 0 0 30px rgba(255, 42, 133, 0.45), inset 0 0 20px rgba(0, 240, 255, 0.25);
+      position: relative;
+      background: rgba(15, 15, 28, 0.85);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      transition: all 0.3s ease;
     }
-
-    .cam-frame {
-      width: calc(100% - 24px);
-      height: calc(100% - 24px);
-      max-width: 1920px;
-      max-height: 1080px;
-      border: 3px solid transparent;
-      border-image: linear-gradient(135deg, #ff2a85 0%, #9d00ff 50%, #00f0ff 100%) 1;
-      box-shadow: 0 0 25px rgba(255, 42, 133, 0.4), inset 0 0 15px rgba(0, 240, 255, 0.2);
-      position: relative;
-    }
-
     .corner-decor {
       position: absolute;
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       border: 3px solid #00f0ff;
     }
-    .top-left { top: -8px; left: -8px; border-right: none; border-bottom: none; }
-    .top-right { top: -8px; right: -8px; border-left: none; border-bottom: none; }
-    .bottom-left { bottom: -8px; left: -8px; border-right: none; border-top: none; }
-    .bottom-right { bottom: -8px; right: -8px; border-left: none; border-top: none; }
-
+    .top-left { top: -9px; left: -9px; border-right: none; border-bottom: none; }
+    .top-right { top: -9px; right: -9px; border-left: none; border-bottom: none; }
+    .bottom-left { bottom: -9px; left: -9px; border-right: none; border-top: none; }
+    .bottom-right { bottom: -9px; right: -9px; border-left: none; border-top: none; }
     .tag-badge {
       position: absolute;
       bottom: -18px;
-      right: 20px;
+      right: 24px;
       background: #080811;
       border: 2px solid #00f0ff;
-      padding: 4px 16px;
+      padding: 4px 18px;
       border-radius: 4px;
       font-family: monospace;
       font-size: 13px;
       font-weight: bold;
       color: #fff;
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
       letter-spacing: 2px;
     }
   </style>
 </head>
-<body>
-  <div class="cam-frame">
-    <div class="corner-decor top-left"></div>
-    <div class="corner-decor top-right"></div>
-    <div class="corner-decor bottom-left"></div>
-    <div class="corner-decor bottom-right"></div>
-    <div class="tag-badge">VICE LIVE</div>
+<body class="flex flex-col min-h-screen">
+
+  <!-- TOP GUMROAD CONVERSION BANNER -->
+<div style="background: linear-gradient(90deg, #ff2a85 0%, #7928ca 50%, #00f0ff 100%); padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; position: sticky; top: 0; z-index: 99999; box-shadow: 0 4px 20px rgba(0,0,0,0.6); flex-wrap: wrap;">
+  <div style="display: flex; align-items: center; gap: 10px; color: #ffffff; font-size: 12px; font-weight: 600;">
+    <span style="background: rgba(0,0,0,0.45); padding: 3px 8px; border-radius: 4px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-family: monospace;">FREE STARTER EDITION</span>
+    <span>Starter webcam frame. Unlock all 8 Animated Scene Overlays, Intermission, Starting Soon & Chat Boxes!</span>
   </div>
+  <a href="https://notionmaster001.gumroad.com/l/ehtqsx" target="_blank" rel="noopener noreferrer" style="background: #ffffff; color: #0a0a12; padding: 6px 14px; border-radius: 6px; font-weight: 800; text-decoration: none; font-size: 11px; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,0.3); transition: transform 0.15s ease;">
+    Unlock Full Suite ($19.99) →
+  </a>
+</div>
+
+
+  <main class="flex-1 max-w-4xl w-full mx-auto p-4 sm:p-6 flex flex-col items-center justify-center gap-6">
+    <div class="text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-950/60 border border-pink-700/50 text-pink-300 font-mono text-xs mb-2">
+        <span class="h-2 w-2 rounded-full bg-pink-500 animate-pulse"></span>
+        <span>OBS BROWSER SOURCE COMPLIANT · 60 FPS CSS HARDWARE ACCELERATED</span>
+      </div>
+      <h1 class="text-2xl font-black text-white tracking-tight sm:text-3xl">
+        ViceStream Neon Studio™
+      </h1>
+      <p class="text-xs text-slate-400 font-mono mt-1">
+        Animated Cyberpunk Webcam Overlay (Dual-Tone Neon Glow Engine)
+      </p>
+    </div>
+
+    <!-- LIVE WEBCAM SIMULATOR STAGE -->
+    <div class="w-full flex items-center justify-center p-6 bg-slate-950/90 rounded-2xl border border-slate-800 shadow-2xl relative">
+      <div id="cam-box" class="cam-frame">
+        <div class="corner-decor top-left"></div>
+        <div class="corner-decor top-right"></div>
+        <div class="corner-decor bottom-left"></div>
+        <div class="corner-decor bottom-right"></div>
+        <div class="text-center text-slate-500 select-none">
+          <div class="text-4xl mb-2">📹</div>
+          <div class="font-mono text-xs text-slate-400">16:9 WEBCAM FEED PREVIEW</div>
+          <div class="font-mono text-[10px] text-slate-600 mt-1">Transparent inside OBS Browser Source</div>
+        </div>
+        <div id="badge-label" class="tag-badge">VICE LIVE</div>
+      </div>
+    </div>
+
+    <!-- CONTROLS & THEME SWITCHER -->
+    <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col gap-3">
+      <div class="flex items-center justify-between text-xs font-mono text-slate-400 border-b border-slate-800 pb-2">
+        <span>PRESET COLOR PALETTES</span>
+        <span class="text-cyan-400">STARTER: 1 / 8 THEMES</span>
+      </div>
+      <div class="grid grid-cols-3 gap-2">
+        <button onclick="setTheme('vice')" class="px-3 py-1.5 rounded-lg bg-pink-950 border border-pink-600 text-pink-200 text-xs font-mono font-bold hover:brightness-125 transition">
+          VICE PINK
+        </button>
+        <button onclick="setTheme('cyan')" class="px-3 py-1.5 rounded-lg bg-cyan-950 border border-cyan-600 text-cyan-200 text-xs font-mono font-bold hover:brightness-125 transition">
+          CYBER CYAN
+        </button>
+        <button onclick="setTheme('gold')" class="px-3 py-1.5 rounded-lg bg-amber-950 border border-amber-600 text-amber-200 text-xs font-mono font-bold hover:brightness-125 transition">
+          SUNSET GOLD
+        </button>
+      </div>
+
+      <div class="pt-2 border-t border-slate-800 flex items-center justify-between text-[11px] font-mono">
+        <span class="text-slate-400">OBS Dimensions:</span>
+        <span class="text-white font-bold">1920 × 1080 (FPS: 60)</span>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function setTheme(theme) {
+      const cam = document.getElementById('cam-box');
+      const badge = document.getElementById('badge-label');
+      if (theme === 'vice') {
+        cam.style.borderImage = 'linear-gradient(135deg, #ff2a85 0%, #9d00ff 50%, #00f0ff 100%) 1';
+        cam.style.boxShadow = '0 0 30px rgba(255, 42, 133, 0.45), inset 0 0 20px rgba(0, 240, 255, 0.25)';
+        badge.style.borderColor = '#00f0ff';
+        badge.style.color = '#fff';
+      } else if (theme === 'cyan') {
+        cam.style.borderImage = 'linear-gradient(135deg, #00f0ff 0%, #0070f3 100%) 1';
+        cam.style.boxShadow = '0 0 30px rgba(0, 240, 255, 0.45), inset 0 0 20px rgba(0, 112, 243, 0.25)';
+        badge.style.borderColor = '#00f0ff';
+        badge.style.color = '#00f0ff';
+      } else if (theme === 'gold') {
+        cam.style.borderImage = 'linear-gradient(135deg, #ffd700 0%, #ff8c00 100%) 1';
+        cam.style.boxShadow = '0 0 30px rgba(255, 215, 0, 0.45), inset 0 0 20px rgba(255, 140, 0, 0.25)';
+        badge.style.borderColor = '#ffd700';
+        badge.style.color = '#ffd700';
+      }
+    }
+  </script>
 </body>
 </html>
